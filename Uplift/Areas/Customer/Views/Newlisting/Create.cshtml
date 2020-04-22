@@ -1,0 +1,79 @@
+﻿@{
+    ViewData["Title"] = "Newlisting";
+}
+@model Uplift.Models.Item
+<div id="newlistingDiv" style="padding-top: 100px; width: 400px; margin:auto; display: block;">
+    <form asp-action="Create">
+
+        <div style="width:100%;">
+            <h3 style="color:#1e4356">POST THAT AWESOME ITEM!</h3>
+        </div>
+
+        <div class="align-items-center" style="margin-bottom:10px;">
+            <div>
+                <label asp-for="Title" style="margin-bottom: 0; color: #68A4C4;">Title</label>
+            </div>
+            <input asp-for="Title" type="text" id="nlInput1" placeholder="Product Title"
+                   style="margin-top: 3px;width:100%;border-radius:4px;">
+        </div>
+
+
+
+        <div class="align-items-center" style="        margin-bottom: 10px;">
+            <div>
+                <label asp-for="Price" style="margin-bottom: 0; color: #68A4C4;">Price</label>
+            </div>
+            <input asp-for="Price" type="text" id="nlInput2" placeholder="Product Price"
+                   style="margin-top: 3px;width:100%;border-radius:4px;">
+        </div>
+
+
+
+        <div class="align-items-center" style="margin-bottom:10px;">
+            <div>
+                <label asp-for="ItemDescription" style="margin-bottom: 0; color: #68A4C4;">Description</label>
+            </div>
+            <textarea asp-for="ItemDescription" type="text" rows="5" id="nlInput3" placeholder="Product Description"
+                      style="margin-top: 3px;width:100%;border-radius:4px;"></textarea>
+        </div>
+
+
+
+        @*<div class="align-items-center" style="margin-bottom:10px;">
+                    <div>
+                        <label for="productType" style="margin-bottom: 3px; color: #68A4C4;">Product Type</label>
+                    </div>
+                    <select id="product-type-input" name="productType">
+                        <option value="Supplies">Supplies</option>
+                        <option value="Dorm Furniture">Dorm Furniture</option>
+                        <option value="Electronics">Electronics</option>
+                        <option value="Clothes-Men">Men's Clothing</option>
+                        <option value="Clothes-Women">Women's Clothing</option>
+                        <option value="Clothes-Accessories">Accessories</option>
+                        <option value="Services">Services</option>
+                    </select>
+                </div>
+
+                <div class="align-items-center" style="margin-bottom:10px;">
+                    <label for="itemImage" style="margin-bottom: 3px; color: #68A4C4;">Choose images for your item!</label>
+
+                    <button type="button" (click)="filePicker1.click()" style="visibility:hidden"></button>
+                    <input type="file" name="itemImage1" #filePicker1 style="margin-bottom: 5px">
+
+                    <button type="button" (click)="filePicker2.click()" style="visibility:hidden"></button>
+                        <input type="file" name="itemImage2" #filePicker2 style="margin-bottom: 5px">
+
+                        <button type="button" (click)="filePicker3.click()" style="visibility:hidden"></button>
+                        <input type="file" name="itemImage3" #filePicker3 style="margin-bottom: 5px">
+                    <!--goes in input tag above if useful (change)="onImagePicked($event)"-->
+                </div>*@
+
+                <div style="width:100%; justify-content:center;margin-bottom:10px;">
+                    <center>
+                        <input id="si-Button" style="margin-top: 20px" type="submit" value="Submit">
+                    </center>
+                </div>
+
+            </form>
+        </div>
+

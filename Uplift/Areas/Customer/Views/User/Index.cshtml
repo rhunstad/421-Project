@@ -1,0 +1,211 @@
+﻿@{
+    ViewData["Title"] = "User profile";
+}
+@model dynamic
+
+
+<script type="text/javascript" src="~/js/script.js"></script>
+<main id="main">
+
+    <!-- ======= Services Section ======= -->
+    <section class="services">
+        <div class="container">
+            <div class="row">
+                <h2>Hi @Model.customer.Fname!</h2>
+            </div>
+            <div class="row">
+                <div class="col-md-6 col-lg-3 d-flex align-items-stretch" data-aos="fade-up">
+                    <a href="/Customer/User/profile" style="color:inherit;">
+                        <div class="icon-box icon-box-blue">
+                            <h4 class="title">Your Info:</h4>
+                            <p>@Model.customer.Fname @Model.customer.LName</p>
+                            <p>@Model.customer.Email</p>
+                            <p>@Model.customer.phoneNumber</p>
+                            <p>@Model.customer.username</p>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="col-md-6 col-lg-3 d-flex align-items-stretch" data-aos="fade-up">
+                    <a href="/Customer/Newlisting" style="color:inherit;">
+                        <div class="icon-box icon-box-blue" style="color:lightblue">
+                            <h4 class="title">Sell an item</h4>
+                            <p class="description">Create a new listing</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="row">
+
+                <div class="accordion" id="accordionExample">
+                    @foreach (var Item in Model.custItems)
+                    {<script>
+                        var itemID = "collapse" + '@Item.Title';
+                        var divCardHeader = document.createElement('div');
+                        var divAtt = document.createAttribute('class');
+                        divAtt.value = 'card-header';
+                        divCardHeader.setAttributeNode(divAtt);
+                        divAtt = document.createAttribute("id");
+                        divAtt.value = itemID;
+                        divCardHeader.setAttributeNode(divAtt);
+
+                        var h2 = document.createElement('h2');
+                        var h2Att = document.createAttribute('class');
+                        h2Att.value = 'mb-0';
+                        h2.setAttributeNode(h2Att);
+
+                        var butt = document.createElement('button');
+                        var bAtt = document.createAttribute('class');
+                        bAtt.value = 'btn btn-link';
+                        butt.setAttributeNode(bAtt);
+                        bAtt = document.createAttribute('type');
+                        bAtt.value = 'button';
+                        butt.setAttributeNode(bAtt);
+                        bAtt = document.createAttribute('data-toggle');
+                        bAtt.value = 'collapse';
+                        butt.setAttributeNode(bAtt);
+                        bAtt = document.createAttribute('data-target');
+                        bAtt.value = '#' + itemID;
+                        butt.setAttributeNode(bAtt);
+                        bAtt = document.createAttribute('aria-expanded');
+                        bAtt.value = 'true';
+                        butt.setAttributeNode(bAtt);
+                        bAtt = document.createAttribute('aria-controls');
+                        bAtt.value = itemID;
+                        butt.setAttributeNode(bAtt);
+
+                        var itemLink = document.createElement('a');
+                        var iAtt = document.createAttribute('href');
+                        // Update this line: 
+                        iAtt.value = '/Customer/Items/';
+                        itemLink.setAttributeNode(iAtt);
+                        itemLink.textContent = '@Item.Title';
+
+                        butt.appendChild(itemLink);
+                        h2.appendChild(butt);
+                        divCardHeader.appendChild(h2);
+
+                        var collapseID = "heading" + '@Item.Title';
+                        var divDropDown = document.createElement('div');
+                        var cardAtt = document.createAttribute('class');
+                        cardAtt.value = 'collapse';
+                        divDropDown.setAttributeNode(cardAtt);
+                        cardAtt = document.createAttribute("id");
+                        cardAtt.value = itemID;
+                        divDropDown.setAttributeNode(cardAtt);
+                        cardAtt = document.createAttribute("aria-labelledby");
+                        cardAtt.value = collapseID;
+                        divDropDown.setAttributeNode(cardAtt);
+                        cardAtt = document.createAttribute("data-parent");
+                        cardAtt.value = "#accordionExample";
+                        divDropDown.setAttributeNode(cardAtt);
+
+                        var divContent = document.createElement('div');
+                        var contentAtt = document.createAttribute('class');
+                        contentAtt.value = 'card-body';
+                        divContent.setAttributeNode(contentAtt);
+                        // FIX THIS TO BE THE BIDDERS: 
+                        divContent.textContent = "ABC";
+
+                        var divCard = document.createElement('div');
+                        var divAtr = document.createAttribute('class');
+                        divAtr.value = 'card';
+                        divCard.setAttributeNode(divAtr);
+
+                        divDropDown.appendChild(divContent);
+                        divCard.appendChild(divDropDown);
+                        divCard.appendChild(divCardHeader);
+
+                        divAccordion = document.getElementById("accordionExample");
+                        divAccordion.appendChild(divCard);
+
+                    </script>
+                    }
+                    <div class="card">
+                        <div class="card-header" id="headingOne">
+                            <h2 class="mb-0">
+                                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                    Collapsible Group Item #1
+                                </button>
+                            </h2>
+                        </div>
+
+                        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                            <div class="card-body">
+                                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header" id="headingTwo">
+                            <h2 class="mb-0">
+                                <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                    Collapsible Group Item #2
+                                </button>
+                            </h2>
+                        </div>
+                        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                            <div class="card-body">
+                                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header" id="headingThree">
+                            <h2 class="mb-0">
+                                <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                    Collapsible Group Item #3
+                                </button>
+                            </h2>
+                        </div>
+                        <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+                            <div class="card-body">
+                                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+
+
+
+
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">First</th>
+                            <th scope="col">Last</th>
+                            <th scope="col">Handle</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">1</th>
+                            <td>Mark</td>
+                            <td>Otto</td>
+                            <td>ABC</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">2</th>
+                            <td>Jacob</td>
+                            <td>Thornton</td>
+                            <td>DEF</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">3</th>
+                            <td>Larry</td>
+                            <td>the Bird</td>
+                            <td>GHI</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+
+            </div>
+        </div>
+    </section><!-- End Services Section -->
+</main>
