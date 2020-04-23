@@ -18,7 +18,7 @@ namespace Uplift.Models
         [Required]
         public string LName { get; set; }
 
-        public int phoneNumber { get; set; }
+        public long phoneNumber { get; set; }
 
 
         [Required]
