@@ -14,6 +14,8 @@ namespace Uplift.DataAccess.Data
         {
         }
         public DbSet<Item> Item { get; set; }
+        public DbSet<Offer> Offer { get; set; }
+        public DbSet<Customer> Customer { get; set; }
         public DbSet<ApplicationUser> ApplicationUser { get; set; } 
 
         // Note 4/15/2020 (Ryland): This may cause issues with the built-in keyword "Users", maybe use "Customers" instead?
