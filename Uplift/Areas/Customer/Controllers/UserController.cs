@@ -36,8 +36,8 @@ namespace Uplift.Controllers
             cust.Email = "rhunstad@crimson.ua.edu";
             cust.Fname = "Ryland";
             cust.LName = "Hunstad";
-            cust.username = "rylandhunstad";
-            cust.phoneNumber = 720;
+            cust.Username = "rylandhunstad";
+            cust.PhoneNumber = 720;
 
             userData.custItems = custItems;
             userData.customer = cust;

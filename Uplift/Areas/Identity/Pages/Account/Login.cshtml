@@ -4,30 +4,35 @@
 @{
     ViewData["Title"] = "Log in";
 }
-
-
+<main id="main">
+    <br /><br /><br />
     <div class="login-form pt-4">
         <form id="account" method="post">
-            <h2 class="text-center text-success"><b>Log in</b></h2>
-            <div class="form-group">
+            <h2 class="text-center text-success" style="align-content:center;color:#68A4C4 !important"><b>Log in</b></h2>
+            <br />
+            <div class="form-group" style="max-width:500px;margin:auto;margin-bottom:15px;">
                 <input asp-for="Input.Email" placeholder="Email..." class="form-control" />
                 <span asp-validation-for="Input.Email" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <br />
+            <div class="form-group" style="max-width:500px;margin:auto;margin-bottom:15px;">
                 <input asp-for="Input.Password" placeholder="Password" class="form-control" />
                 <span asp-validation-for="Input.Password" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <button type="submit" class="btn btn-success btn-block">Log in</button>
+            <br />
+            <div class="form-group" style="max-width:100px;margin:0 auto;">
+                <button type="submit" class="btn btn-success btn-block" style="background-color:#68A4C4;color:#DDECF5;border-color:#68A4C4;">Log in</button>
             </div>
+            <br />
             <div class="text-center">
-                  <a id="forgot-password" style="text-decoration:none;" asp-page="./ForgotPassword">Forgot your password?</a>
+                <a id="forgot-password" style="text-decoration:none;" asp-page="./ForgotPassword">Forgot your password?</a>
             </div>
         </form>
+        <br /><br /><br />
     </div>
+</main>
 
 
-
-@section Scripts {
-    <partial name="_ValidationScriptsPartial" />
-}
+        @section Scripts {
+            <partial name="_ValidationScriptsPartial" />
+        }

@@ -8,7 +8,7 @@ namespace Uplift.Models
      public class Offer
     {
 
-        
+        [Key]
         [Required]
         public Guid ItemID { get; set; }
 
