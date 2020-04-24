@@ -36,7 +36,7 @@ namespace Uplift.Controllers
             {
                 _unitOfWork.Item.Add(newItem);
                 _unitOfWork.Save();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Index","Home");
             }
             return View(newItem);
         }

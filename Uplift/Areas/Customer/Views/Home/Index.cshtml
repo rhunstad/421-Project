@@ -1,4 +1,4 @@
-﻿@model dynamic
+﻿@model IEnumerable<Uplift.Models.Item>
 @{
     ViewData["Title"] = "Home Page";
 }
@@ -11,12 +11,12 @@
         <div class="container" id="Featured-items-container" style="border-color:#397fa2; border-radius:5px; border-width:medium; border-style:solid; padding:12px; margin-top:30px; margin-bottom:20px;">
             <h2 id="h2">Featured Items</h2>
             <div class="row" id="Featured-items">
-                @foreach(var Item in Model.FeaturedItems){
+                @foreach(var Item in Model){
                     <script>loadItem('@Item.Title', '@Item.ItemDescription', '@Item.Price', "Featured-items", 0)</script>}
             </div>
         </div>
 
-        <div class="container" id="home-page-container">
+        @*<div class="container" id="home-page-container">
             <h3><a href="/Customer/Results" style="color:grey">Supplies (see more)</a></h3>
             <div class="row" id="Supplies-items">
                 @foreach (var Item in Model.SuppliesItems){
@@ -71,7 +71,7 @@
                     <script>loadItem('@Item.Title', '@Item.ItemDescription', '@Item.Price', "Browse-All-items")</script>}
             </div>
             
-        </div>
+        </div>*@
 
     </section>
 
