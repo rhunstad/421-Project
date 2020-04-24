@@ -65,11 +65,13 @@ namespace Uplift.Areas.Identity.Pages.Account
             public string ConfirmPassword { get; set; }
 
             public string Name { get; set; }
+            [Display(Name = "Street Address")]
             public string StreetAddress { get; set; }
             public string City { get; set; }
             public string State { get; set; }
+            [Display(Name = "Postal Code")]
             public string PostalCode { get; set; }
-
+            [Display(Name = "Phone number")]
             public string PhoneNumber { get; set; }
 
         }
@@ -106,7 +108,8 @@ namespace Uplift.Areas.Identity.Pages.Account
 
                     if (role == SD.Admin)
                     {
-                        await _userManager.AddToRoleAsync(user, SD.Admin);
+                        // IF YOU WANT TO ADD ADMIN's TO SITE< CHANGE SD.Manager below to SD.Admin
+                        await _userManager.AddToRoleAsync(user, SD.Manager);
                     }
                     else
                     {

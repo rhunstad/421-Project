@@ -7,12 +7,12 @@
 
 <main id="main">
     <br /><br /><br /> 
-    <h1>Register New Employee</h1>
+    <h1>New User</h1>
 
     <div class="row backgroundWhite border">
-        <div class="col-md-12">
+        <div class="col-md-12" style="margin:0 auto;">
             <form asp-route-returnUrl="@Model.ReturnUrl" method="post">
-                <h4>Create a new account.</h4>
+                <h4>Create a new account</h4>
                 <hr />
                 <div asp-validation-summary="All" class="text-danger"></div>
                 <div class="form-group row">
@@ -97,16 +97,16 @@
                         <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
                     </div>
                 </div>
-                <div class="form-group row">
+                <div class="form-group row" style="display:none">
                     <div class="col-3"></div>
                     <div class="col-5">
                         <input type="radio" name="rdUserRole" value="@SD.Admin" /> @SD.Admin
-                        <input type="radio" name="rdUserRole" value="@SD.Manager" checked /> @SD.Manager
+                        <input type="radio" name="rdUserRole" value="@SD.Manager" checked /> User
                     </div>
                 </div>
                 <div class="form-group row">
                     <div class="col-5 offset-3">
-                        <button type="submit" class="btn btn-primary form-control">Register</button>
+                        <button type="submit" class="btn btn-primary form-control">Sign up</button>
                     </div>
                 </div>
 

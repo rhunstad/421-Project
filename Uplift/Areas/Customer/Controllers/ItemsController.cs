@@ -7,11 +7,12 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Uplift.Models;
+using Uplift.Utility;
 
 namespace Uplift.Controllers
 {
     [Area("Customer")]
-    [Authorize]
+    [Authorize(Roles = SD.Admin)]
     public class ItemsController : Controller
     {
         private readonly ILogger<ItemsController> _logger;
