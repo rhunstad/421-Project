@@ -49,7 +49,7 @@ function sortResults() {
 document.getElementById("sort-results-dropdown").onchange = sortResults;
 
 
-function loadItem(itemTitle, itemDesc, itemPrice, parentDiv, divNum) {
+function loadItem(itemTitle, itemDesc, itemPrice, parentDiv, itemID) {
 
     var divCol = document.createElement('div');
     var divAtt = document.createAttribute('class');
@@ -61,15 +61,10 @@ function loadItem(itemTitle, itemDesc, itemPrice, parentDiv, divNum) {
     divAtt = document.createAttribute('data-aos-delay');
     divAtt.value = '200';
     divCol.setAttributeNode(divAtt);
-    if (divNum != 0) {
-        divAtt = document.createAttribute('id');
-        divAtt.value = 'itemDivPage' + divNum;
-        divCol.setAttributeNode(divAtt);
-    }
 
     var itemLink = document.createElement('a');
     linkAtt = document.createAttribute('href');
-    linkAtt.value = '/Customer/Items/';
+    linkAtt.value = '/Customer/Items/Index/' + itemID.toString();
     itemLink.setAttributeNode(linkAtt);
     linkAtt = document.createAttribute('style');
     linkAtt.value = "color:inherit;";

@@ -22,7 +22,7 @@ namespace Uplift.Controllers
             _logger = logger;
         }
 
-        public IActionResult Index(int id)
+        public IActionResult Index(Guid id)
         {
             return View(id);
         }
