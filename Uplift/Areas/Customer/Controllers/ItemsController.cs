@@ -7,25 +7,41 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Uplift.Models;
+using Microsoft.EntityFrameworkCore;
+using Uplift.DataAccess.Data;
 using Uplift.Utility;
 
 namespace Uplift.Controllers
 {
     [Area("Customer")]
-    [Authorize(Roles = SD.Admin)]
+    //[Authorize(Roles = SD.Admin)]
     public class ItemsController : Controller
     {
-        private readonly ILogger<ItemsController> _logger;
+        private readonly ApplicationDbContext _context;
 
-        public ItemsController(ILogger<ItemsController> logger)
+        public ItemsController(ApplicationDbContext context)
         {
-            _logger = logger;
+            _context = context;
         }
 
-        public IActionResult Index(Guid id)
+        public async Task<IActionResult> Index(Guid? id)
         {
-            return View(id);
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var item = await _context.Item
+                .FirstOrDefaultAsync(m => m.ItemID == id);
+            if (item == null)
+            {
+                return NotFound();
+            }
+
+            return View(item);
         }
+
+        
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

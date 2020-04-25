@@ -1,7 +1,7 @@
 ﻿@{
     ViewData["Title"] = "Items";
 }
-@model Guid
+@model Item
 
 
 <div class="si-row">
@@ -14,9 +14,8 @@
         </div>
     </div>
     <div class="si-column si-right">
-        <h2 id="si-Title">Wall Decor @Model</h2>
-        <h3 id="si-Price">$12</h3>
-        <p><b>Posted:</b> 04/16/20</p>
+        <h2 id="si-Title">@Model.Title</h2>
+        <h3 id="si-Price">$@Model.Price</h3>
         <button id="si-Button">
             Contact Seller
         </button>
