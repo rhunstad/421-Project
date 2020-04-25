@@ -88,6 +88,16 @@ namespace Uplift
                     name: "default",
                     pattern: "{area=Customer}/{controller=Home}/{action=Index}/{id?}");
                 endpoints.MapRazorPages();
+
+                endpoints.MapControllerRoute(
+                    name: "item",
+                    pattern: "{area=Customer}/{controller=Items}/{action=Index}/{id?}");
+                endpoints.MapRazorPages();
+
+                endpoints.MapControllerRoute(
+                    name: "user",
+                    pattern: "{area=Customer}/{controller=User}/{action=Index}/{id?}");
+                endpoints.MapRazorPages();
             });
         }
     }

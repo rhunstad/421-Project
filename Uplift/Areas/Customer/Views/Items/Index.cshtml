@@ -1,7 +1,7 @@
 ﻿@{
     ViewData["Title"] = "Items";
 }
-@model Uplift.Models.Item
+@model int
 
 
 <div class="si-row">
@@ -14,7 +14,7 @@
         </div>
     </div>
     <div class="si-column si-right">
-        <h2 id="si-Title">Wall Decor</h2>
+        <h2 id="si-Title">Wall Decor @Model</h2>
         <h3 id="si-Price">$12</h3>
         <p><b>Posted:</b> 04/16/20</p>
         <button id="si-Button">
