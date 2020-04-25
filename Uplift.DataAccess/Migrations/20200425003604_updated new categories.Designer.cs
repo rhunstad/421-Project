@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Uplift.DataAccess.Data;
 
 namespace Uplift.DataAccess.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200425003604_updated new categories")]
+    partial class updatednewcategories
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -183,29 +185,6 @@ namespace Uplift.DataAccess.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("Uplift.Models.Customer", b =>
-                {
-                    b.Property<string>("Email");
-
-                    b.Property<string>("Fname")
-                        .IsRequired();
-
-                    b.Property<string>("LName")
-                        .IsRequired();
-
-                    b.Property<string>("Password")
-                        .IsRequired();
-
-                    b.Property<long>("PhoneNumber");
-
-                    b.Property<string>("Username")
-                        .IsRequired();
-
-                    b.HasKey("Email");
-
-                    b.ToTable("Customer");
-                });
-
             modelBuilder.Entity("Uplift.Models.Item", b =>
                 {
                     b.Property<Guid>("ItemID")
@@ -248,6 +227,29 @@ namespace Uplift.DataAccess.Migrations
                     b.HasKey("ItemID");
 
                     b.ToTable("Offer");
+                });
+
+            modelBuilder.Entity("Uplift.Models.XChangeCustomer", b =>
+                {
+                    b.Property<string>("Email");
+
+                    b.Property<string>("Fname")
+                        .IsRequired();
+
+                    b.Property<string>("LName")
+                        .IsRequired();
+
+                    b.Property<string>("Password")
+                        .IsRequired();
+
+                    b.Property<long>("PhoneNumber");
+
+                    b.Property<string>("Username")
+                        .IsRequired();
+
+                    b.HasKey("Email");
+
+                    b.ToTable("Customer");
                 });
 
             modelBuilder.Entity("Uplift.Models.ApplicationUser", b =>

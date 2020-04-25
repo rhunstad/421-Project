@@ -24,5 +24,7 @@ namespace Uplift.Models
         public DateTime DateSold { get; set; }
 
         public int ItemsSold { get; set; }
+
+        public string itemCateogry { get; set; }
     }
 }
