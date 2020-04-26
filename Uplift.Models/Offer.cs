@@ -12,8 +12,8 @@ namespace Uplift.Models
         [Required]
         public Guid ItemID { get; set; }
 
-       [Required]
-       public string FName { get; set; }
+        [Required]
+        public string FName { get; set; }
 
         [Required]
         public string LName { get; set; }

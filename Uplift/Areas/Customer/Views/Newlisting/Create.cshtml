@@ -40,11 +40,11 @@
 
 
 
-        @*<div class="align-items-center" style="margin-bottom:10px;">
+        <div class="align-items-center" style="margin-bottom:10px;">
                     <div>
-                        <label for="productType" style="margin-bottom: 3px; color: #68A4C4;">Product Type</label>
+                        <label asp-for="ItemCategory" for="productType" style="margin-bottom: 3px; color: #68A4C4;">Product Type</label>
                     </div>
-                    <select id="product-type-input" name="productType">
+                    <select asp-for="ItemCategory" id="product-type-input">
                         <option value="Supplies">Supplies</option>
                         <option value="Dorm Furniture">Dorm Furniture</option>
                         <option value="Electronics">Electronics</option>
@@ -54,7 +54,7 @@
                         <option value="Services">Services</option>
                     </select>
                 </div>
-
+            @*
                 <div class="align-items-center" style="margin-bottom:10px;">
                     <label for="itemImage" style="margin-bottom: 3px; color: #68A4C4;">Choose images for your item!</label>
 

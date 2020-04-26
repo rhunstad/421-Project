@@ -12,8 +12,8 @@ namespace Uplift.Models
         [Required]
         public string Email { get; set; }
 
-       [Required]
-       public string Fname { get; set; }
+        [Required]
+        public string Fname { get; set; }
 
         [Required]
         public string LName { get; set; }

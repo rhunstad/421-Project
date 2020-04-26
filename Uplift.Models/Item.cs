@@ -25,6 +25,8 @@ namespace Uplift.Models
 
         public int ItemsSold { get; set; }
 
-        public string itemCateogry { get; set; }
+        public string ItemCategory { get; set; }
+
+
     }
 }
