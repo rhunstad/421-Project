@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Uplift.DataAccess.Data;
 
 namespace Uplift.DataAccess.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200426025309_updated database")]
+    partial class updateddatabase
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -234,8 +236,6 @@ namespace Uplift.DataAccess.Migrations
                     b.Property<Guid>("ItemID")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<Guid>("Buyer");
-
                     b.Property<string>("Email")
                         .IsRequired();
 
@@ -244,8 +244,6 @@ namespace Uplift.DataAccess.Migrations
                     b.Property<string>("LName");
 
                     b.Property<DateTime>("OfferDate");
-
-                    b.Property<Guid>("Seller");
 
                     b.Property<string>("buyerEmail")
                         .IsRequired();
