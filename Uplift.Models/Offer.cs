@@ -13,13 +13,19 @@ namespace Uplift.Models
         public Guid ItemID { get; set; }
 
         [Required]
+        public string buyerEmail { get; set; }
+
+        [Required]
+     
+        public string Email { get; set; }
+
         public string FName { get; set; }
 
-        [Required]
         public string LName { get; set; }
 
-        [Required]
-        public string BuyerName { get; set; }
+
+
+
 
         [Required]
         public DateTime OfferDate { get; set; }

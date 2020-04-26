@@ -10,6 +10,7 @@ namespace Uplift.Models
 
         [Key]
         [Required]
+        
         public Guid ItemID { get; set; }
 
         [Required]
