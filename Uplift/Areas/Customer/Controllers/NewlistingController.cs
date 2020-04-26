@@ -1,13 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 using Uplift.DataAccess.Data.Repository;
+using Microsoft.EntityFrameworkCore;
+using Uplift.DataAccess.Data;
 using Uplift.Models;
+using Microsoft.AspNetCore.Http;
 
 namespace Uplift.Controllers
 {
@@ -16,11 +19,11 @@ namespace Uplift.Controllers
     public class NewlistingController : Controller
     {
 
-        private readonly IUnitOfWork _unitOfWork;
+        private readonly ApplicationDbContext _context;
 
-        public NewlistingController(IUnitOfWork unitOfWork)
+        public NewlistingController(ApplicationDbContext context)
         {
-            _unitOfWork = unitOfWork;
+            _context = context;
         }
 
         public IActionResult Create()
@@ -28,14 +31,34 @@ namespace Uplift.Controllers
             return View();
         }
 
+        public async Task<IActionResult> GetItemPhoto(Guid id)
+        {
+            var item = await _context.Item
+                .FirstOrDefaultAsync(m => m.ItemID == id);
+            if (item == null)
+            {
+                return NotFound();
+            }
+            var imageData = item.ItemImage;
+
+            return File(imageData, "image/jpg");
+        }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create(Item newItem)
+        public async Task<IActionResult> Create(Item newItem, IFormFile itemImage1)
         {
             if (ModelState.IsValid)
             {
-                _unitOfWork.Item.Add(newItem);
-                _unitOfWork.Save();
+                if (itemImage1 != null && itemImage1.Length > 0)
+                {
+                    var memoryStream = new MemoryStream();
+                    await itemImage1.CopyToAsync(memoryStream);
+                    newItem.ItemImage = memoryStream.ToArray();
+                }
+
+                _context.Add(newItem);
+                await _context.SaveChangesAsync();
                 return RedirectToAction("Index","Home");
             }
             return View(newItem);

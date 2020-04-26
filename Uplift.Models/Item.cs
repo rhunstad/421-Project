@@ -34,6 +34,8 @@ namespace Uplift.Models
         [Required]
         public Guid SellerID { get; set; }
 
+        [DataType(DataType.Upload)]
+        public byte[] ItemImage { get; set; }
 
     }
 }

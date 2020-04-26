@@ -53,28 +53,28 @@
                         <option value="Clothes-Accessories">Accessories</option>
                         <option value="Services">Services</option>
                     </select>
-                </div>
-            @*
-                <div class="align-items-center" style="margin-bottom:10px;">
-                    <label for="itemImage" style="margin-bottom: 3px; color: #68A4C4;">Choose images for your item!</label>
-
-                    <button type="button" (click)="filePicker1.click()" style="visibility:hidden"></button>
-                    <input type="file" name="itemImage1" #filePicker1 style="margin-bottom: 5px">
-
-                    <button type="button" (click)="filePicker2.click()" style="visibility:hidden"></button>
-                        <input type="file" name="itemImage2" #filePicker2 style="margin-bottom: 5px">
-
-                        <button type="button" (click)="filePicker3.click()" style="visibility:hidden"></button>
-                        <input type="file" name="itemImage3" #filePicker3 style="margin-bottom: 5px">
-                    <!--goes in input tag above if useful (change)="onImagePicked($event)"-->
-                </div>*@
-
-                <div style="width:100%; justify-content:center;margin-bottom:10px;">
-                    <center>
-                        <input id="si-Button" style="margin-top: 20px" type="submit" value="Submit">
-                    </center>
-                </div>
-
-            </form>
         </div>
+            
+        <div class="align-items-center" style="margin-bottom:10px;">
+            <label for="itemImage1" style="margin-bottom: 3px; color: #68A4C4;">Choose images for your item!</label>
+
+            <button type="button" (click)="filePicker1.click()" style="visibility:hidden"></button>
+            <input type="file" name="itemImage1" #filePicker1 style="margin-bottom: 5px">
+
+            @*<button type="button" (click)="filePicker2.click()" style="visibility:hidden"></button>
+            <input type="file" name="itemImage2" #filePicker2 style="margin-bottom: 5px">
+
+            <button type="button" (click)="filePicker3.click()" style="visibility:hidden"></button>
+            <input type="file" name="itemImage3" #filePicker3 style="margin-bottom: 5px">*@
+                <!--goes in input tag above if useful (change)="onImagePicked($event)"-->
+        </div>
+
+        <div style="width:100%; justify-content:center;margin-bottom:10px;">
+            <center>
+                <input id="si-Button" style="margin-top: 20px" type="submit" value="Submit">
+            </center>
+        </div>
+
+    </form>
+</div>
 
