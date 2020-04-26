@@ -6,6 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Uplift.DataAccess.Data.Repository;
 using Uplift.Models;
 
 namespace Uplift.Controllers
@@ -14,15 +15,18 @@ namespace Uplift.Controllers
     public class UserController : Controller
     {
         private readonly ILogger<UserController> _logger;
+        private readonly IUnitOfWork _unitOfWork;
 
-        public UserController(ILogger<UserController> logger)
+        public UserController(ILogger<UserController> logger, IUnitOfWork unitOfWork)
         {
             _logger = logger;
+            _unitOfWork = unitOfWork;
         }
         
         public IActionResult Index()
         {
             dynamic userData = new ExpandoObject();
+            var ItemsList = _unitOfWork.Item.GetAll();
 
             List<Item> custItems = new List<Item>();
             var displayItem = new Item();
@@ -31,8 +35,18 @@ namespace Uplift.Controllers
             displayItem.ItemDescription = "This is the item description";
             custItems.Add(displayItem);
 
-            Customer cust = new Customer();
+            var count = 0;
+            // SUBSTITUTE THIS METHOD FOR A METHOD THAT FINDS ALL ITEMS WHERE Item.SellerID = customer.UserID
+            foreach (var Item in ItemsList)
+            {
+                if(count < 4)
+                {
+                    custItems.Add(Item);
+                }
+                count += 1;
+            }
 
+            Customer cust = new Customer();
             cust.Email = "rhunstad@crimson.ua.edu";
             cust.Fname = "Ryland";
             cust.LName = "Hunstad";

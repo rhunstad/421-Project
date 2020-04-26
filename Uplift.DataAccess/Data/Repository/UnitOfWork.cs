@@ -16,6 +16,7 @@ namespace Uplift.DataAccess.Data.Repository
         }
 
         public IItemRepository Item { get; private set; }
+        public IOfferRepository Offer { get; private set; }
 
         public void Dispose()
         {

@@ -48,6 +48,29 @@ function sortResults() {
 }
 document.getElementById("sort-results-dropdown").onchange = sortResults;
 
+function loadOffer(offerFName, offerLName, offerBuyerGuid) {
+
+    var tr = document.createElement('tr');
+    var th = document.createElement('th');
+    var thAtt = document.createAttribute('scope');
+    thAtt.value = 'row';
+    th.setAttributeNode(thAtt);
+
+    var userLink = document.createElement('a');
+    linkAtt = document.createAttribute('href');
+
+    // CHANGE THIS LINE ONCE WE GET GUID:
+    linkAtt.value = '/Customer/User/Index/' + offerBuyerGuid.toString();
+    userLink.setAttributeNode(linkAtt);
+    userLink.textContent = offerFName + " " + offerLName;
+
+    th.appendChild(userLink);
+    tr.appendChild(th);
+
+    var tableBody = document.getElementById("offers-table-body");
+    tableBody.appendChild(tr)
+}
+
 
 function loadItem(itemTitle, itemDesc, itemPrice, parentDiv, itemID) {
 

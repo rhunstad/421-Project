@@ -16,7 +16,6 @@ namespace Uplift.Models
         public string buyerEmail { get; set; }
 
         [Required]
-     
         public string Email { get; set; }
 
         public string FName { get; set; }

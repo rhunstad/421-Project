@@ -1,23 +1,48 @@
 ﻿@{
     ViewData["Title"] = "Items";
 }
-@model Item
+@model dynamic
 
 
-<div class="si-row">
-    <div class="si-column si-left">
-        <img id="si-main-image" src="https://i.imgur.com/hGhLQaH.jpg" alt="Image" />
-        <div id="imageGallery" class="iG">
-            <img onclick="swapPic1()" id="p1" class="miniImage" src="https://i.imgur.com/hGhLQaH.jpg" alt="Image" />
-            <img onclick="swapPic2()" id="p2" class="miniImage" src="https://i.imgur.com/q4oOAWR.jpg" alt="Image" />
-            <img onclick="swapPic3()" id="p3" class="miniImage" src="https://i.imgur.com/jPhCDdB.jpg" alt="Image" />
+<script type="text/javascript" src="~/js/script.js"></script>
+
+<main id="main">
+    <div class="si-row">
+        <div class="si-column si-left">
+            <img id="si-main-image" src="https://i.imgur.com/hGhLQaH.jpg" alt="Image" />
+            <div id="imageGallery" class="iG">
+                <img onclick="swapPic1()" id="p1" class="miniImage" src="https://i.imgur.com/hGhLQaH.jpg" alt="Image" />
+                <img onclick="swapPic2()" id="p2" class="miniImage" src="https://i.imgur.com/q4oOAWR.jpg" alt="Image" />
+                <img onclick="swapPic3()" id="p3" class="miniImage" src="https://i.imgur.com/jPhCDdB.jpg" alt="Image" />
+            </div>
+        </div>
+        <div class="si-column si-right">
+            <h2 id="si-Title">@Model.item.Title</h2>
+            <h3 id="si-Price">$@Model.item.Price</h3>
+            <button id="si-Button">
+                Contact Seller
+            </button>
+        </div>
+
+        <div class="si-column si-right">
+            <h2>Offers: </h2>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Name: </th>
+                    </tr>
+                </thead>
+                <tbody id="offers-table-body">
+                </tbody>
+            </table>
         </div>
     </div>
-    <div class="si-column si-right">
-        <h2 id="si-Title">@Model.Title</h2>
-        <h3 id="si-Price">$@Model.Price</h3>
-        <button id="si-Button">
-            Contact Seller
-        </button>
-    </div>
-</div>
+
+    @foreach (var Offer in Model.Offers)
+    {
+        <script>
+                loadOffer('@Offer.FName', '@Offer.LName', '@Offer.buyerEmail')
+        </script>
+
+    }
+</main>
