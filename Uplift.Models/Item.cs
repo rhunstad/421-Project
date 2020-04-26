@@ -28,6 +28,12 @@ namespace Uplift.Models
 
         public string ItemCategory { get; set; }
 
+        
+        public string Email { get; set; }
+
+        [Required]
+        public Guid SellerID { get; set; }
+
 
     }
 }

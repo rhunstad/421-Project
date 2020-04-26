@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Uplift.DataAccess.Data;
 
 namespace Uplift.DataAccess.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200426193008_linking database attempt")]
+    partial class linkingdatabaseattempt
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -185,11 +187,7 @@ namespace Uplift.DataAccess.Migrations
 
             modelBuilder.Entity("Uplift.Models.Customer", b =>
                 {
-                    b.Property<Guid>("SellerID")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("Email")
-                        .IsRequired();
+                    b.Property<string>("Email");
 
                     b.Property<string>("Fname")
                         .IsRequired();
@@ -205,7 +203,7 @@ namespace Uplift.DataAccess.Migrations
                     b.Property<string>("Username")
                         .IsRequired();
 
-                    b.HasKey("SellerID");
+                    b.HasKey("Email");
 
                     b.ToTable("Customer");
                 });
@@ -217,7 +215,8 @@ namespace Uplift.DataAccess.Migrations
 
                     b.Property<DateTime>("DateSold");
 
-                    b.Property<string>("Email");
+                    b.Property<string>("Email")
+                        .IsRequired();
 
                     b.Property<string>("ItemCategory");
 
@@ -226,8 +225,6 @@ namespace Uplift.DataAccess.Migrations
                     b.Property<int>("ItemsSold");
 
                     b.Property<double>("Price");
-
-                    b.Property<Guid>("SellerID");
 
                     b.Property<string>("Title")
                         .IsRequired();
@@ -241,7 +238,7 @@ namespace Uplift.DataAccess.Migrations
                 {
                     b.Property<DateTime>("OfferDate");
 
-                    b.Property<Guid>("BuyerID");
+                    b.Property<Guid>("Buyer");
 
                     b.Property<string>("Email")
                         .IsRequired();
@@ -252,7 +249,7 @@ namespace Uplift.DataAccess.Migrations
 
                     b.Property<string>("LName");
 
-                    b.Property<Guid>("SellerID");
+                    b.Property<Guid>("Seller");
 
                     b.Property<string>("buyerEmail")
                         .IsRequired();

@@ -8,7 +8,7 @@ namespace Uplift.Models
      public class Customer
     {
 
-        [Key]
+        
         [Required]
         public string Email { get; set; }
 
@@ -26,6 +26,11 @@ namespace Uplift.Models
 
         [Required]
         public string Password { get; set; }
+
+
+        [Key]
+        [Required]
+        public Guid SellerID { get; set; }
 
         
   

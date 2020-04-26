@@ -8,7 +8,7 @@ namespace Uplift.Models
      public class Offer
     {
 
-        [Key]
+        
         [Required]
         public Guid ItemID { get; set; }
 
@@ -18,11 +18,11 @@ namespace Uplift.Models
         [Required]
         public string Email { get; set; }
 
-       
-        public Guid Seller { get; set; }
+       [Required]
+        public Guid SellerID { get; set; }
 
        
-        public Guid Buyer { get; set; }
+        public Guid BuyerID { get; set; }
 
         public string FName { get; set; }
 
@@ -31,7 +31,7 @@ namespace Uplift.Models
 
 
 
-
+        [Key]
         [Required]
         public DateTime OfferDate { get; set; }
 
