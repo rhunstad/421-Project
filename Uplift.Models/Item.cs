@@ -11,7 +11,7 @@ namespace Uplift.Models
 
     public class Item
     {
-
+        
         [Key]
         [Required]
         

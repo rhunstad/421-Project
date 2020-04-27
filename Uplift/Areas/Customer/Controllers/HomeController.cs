@@ -81,7 +81,7 @@ namespace Uplift.Controllers
                 {
                     FeaturedItems.Add(Item);
                 }
-                if ((count == 0) | (count == 1) | (count == 2) | (count == 3))
+                if ((count == 0) | (count == 1) | (count == 2) | (count == ItemsList.Count()-1))
                 {
                     BrowseAllItems.Add(Item);
                 }
