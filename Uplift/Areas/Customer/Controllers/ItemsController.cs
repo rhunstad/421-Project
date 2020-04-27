@@ -11,6 +11,7 @@ using Microsoft.EntityFrameworkCore;
 using Uplift.DataAccess.Data;
 using Uplift.Utility;
 using Uplift.DataAccess.Data.Repository;
+using Microsoft.AspNetCore.Identity;
 using System.Dynamic;
 
 namespace Uplift.Controllers
@@ -23,28 +24,34 @@ namespace Uplift.Controllers
 
         private readonly IUnitOfWork _unitOfWork;
 
-        public ItemsController(ApplicationDbContext context, IUnitOfWork unitOfWork)
+        private readonly UserManager<ApplicationUser> _userManager;
+
+        public ItemsController(ApplicationDbContext context, IUnitOfWork unitOfWork, UserManager<ApplicationUser> userManager)
         {
             _context = context;
             _unitOfWork = unitOfWork;
+            _userManager = userManager;
         }
 
         public async Task<IActionResult> Index(Guid? id)
         {
             dynamic ViewModel = new ExpandoObject();
 
+
+
             //  TROUBLE WITH CALLING THIS: Throws a "NullReferenceException: Object reference not set to an instance of an object." error: 
             // var OffersList = _unitOfWork.Offer.GetAll();
 
             // INSERT FUNCTION HERE TO PARSE THROUGH OFFERS WHERE OFFER.SellerID = Item.SellerID
 
+            var userId = _userManager.GetUserId(HttpContext.User);
+            ApplicationUser user = _userManager.FindByIdAsync(userId).Result;
+
             if (id == null)
             {
                 return NotFound();
             }
-
             var item = await _context.Item
-                
                 .FirstOrDefaultAsync(m => m.ItemID == id);
             if (item == null)
             {
