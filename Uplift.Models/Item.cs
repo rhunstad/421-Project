@@ -44,5 +44,7 @@ namespace Uplift.Models
         [DataType(System.ComponentModel.DataAnnotations.DataType.Upload)]
         public byte[] ItemImage { get; set; }
 
+        public DateTime ModifiedDate { get; set; }
+
     }
 }
