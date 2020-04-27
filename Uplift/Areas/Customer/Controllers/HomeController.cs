@@ -25,32 +25,6 @@ namespace Uplift.Controllers
 
         public IActionResult Index()
         {
-            //dynamic ItemsList = new ExpandoObject();
-
-            //List<Item> FeaturedItems = new List<Item>();
-            //var displayItem = new Item();
-            //displayItem.Title = "Title1";
-            //displayItem.Price = 89.99;
-            //displayItem.ItemDescription = "This is the item description";
-            //FeaturedItems.Add(displayItem);
-
-            //displayItem = new Item();
-            //displayItem.Title = "Title2";
-            //displayItem.Price = 79.99;
-            //displayItem.ItemDescription = "This is the item description2. This is the item description";
-            //FeaturedItems.Add(displayItem);
-
-            //displayItem = new Item();
-            //displayItem.Title = "Title1";
-            //displayItem.Price = 89.99;
-            //displayItem.ItemDescription = "This is the item description";
-            //FeaturedItems.Add(displayItem);
-
-            //displayItem = new Item();
-            //displayItem.Title = "Title2";
-            //displayItem.Price = 79.99;
-            //displayItem.ItemDescription = "This is the item description2. This is the item descriptionThis is the item description3. This is the item descriptionThis is the item description4. This is the item descriptionThis is the item description5. This is the item descriptionThis is the item description6. This is the item descriptionThis is the item description7. This is the item descriptionThis is the item description8. This is the item descriptionThis is the item description9. This is the item descriptionThis is the item description10. This is the item description";
-            //FeaturedItems.Add(displayItem);
 
             List<Item> FeaturedItems = new List<Item>();
             List<Item> SuppliesItems = new List<Item>();
@@ -107,7 +81,7 @@ namespace Uplift.Controllers
                 {
                     FeaturedItems.Add(Item);
                 }
-                if ((count == 0) | (count == 1) | (count == 2) | (count == 3))
+                if ((count == 0) | (count == 1) | (count == 2) | (count == ItemsList.Count()-1))
                 {
                     BrowseAllItems.Add(Item);
                 }

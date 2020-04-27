@@ -102,7 +102,8 @@ function loadItem(itemTitle, itemDesc, itemPrice, parentDiv, itemID) {
 
     var img = document.createElement("img");
     imgAtt = document.createAttribute('src');
-    imgAtt.value = '/assets/img/Xchange180.png';
+    // REPLACE THE VALUE AFTER /GetItemPhoto/ with a call to var ItemID above
+    imgAtt.value = 'https://localhost:5001/Customer/Newlisting/GetItemPhoto/ae61d752-885e-40b7-005b-08d7ea5de7cf';
     img.setAttributeNode(imgAtt);
 
     imgAtt = document.createAttribute('alt');
