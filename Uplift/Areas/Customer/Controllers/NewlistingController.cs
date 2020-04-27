@@ -46,14 +46,14 @@ namespace Uplift.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(Item newItem, IFormFile itemImage1)
+        public async Task<IActionResult> Create(Item newItem, IFormFile imageFile)
         {
             if (ModelState.IsValid)
             {
-                if (itemImage1 != null && itemImage1.Length > 0)
+                if (imageFile != null && imageFile.Length > 0)
                 {
                     var memoryStream = new MemoryStream();
-                    await itemImage1.CopyToAsync(memoryStream);
+                    await imageFile.CopyToAsync(memoryStream);
                     newItem.ItemImage = memoryStream.ToArray();
                 }
 

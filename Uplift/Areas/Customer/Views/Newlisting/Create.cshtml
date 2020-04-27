@@ -4,7 +4,7 @@
 @model Uplift.Models.Item
 
 <div id="newlistingDiv" style="padding-top: 100px; width: 400px; margin:auto; display: block;">
-    <form asp-action="Create">
+    <form asp-action="Create" enctype="multipart/form-data">
 
         <div style="width:100%;">
             <h3 style="color:#1e4356">POST THAT AWESOME ITEM!</h3>
@@ -56,10 +56,10 @@
         </div>
             
         <div class="align-items-center" style="margin-bottom:10px;">
-            <label for="itemImage1" style="margin-bottom: 3px; color: #68A4C4;">Choose images for your item!</label>
+            <label for="imageFile" style="margin-bottom: 3px; color: #68A4C4;">Choose images for your item!</label>
 
-            <button type="button" (click)="filePicker1.click()" style="visibility:hidden"></button>
-            <input type="file" name="itemImage1" #filePicker1 style="margin-bottom: 5px">
+            
+            <input type="file" name="imageFile" style="margin-bottom: 5px">
 
             @*<button type="button" (click)="filePicker2.click()" style="visibility:hidden"></button>
             <input type="file" name="itemImage2" #filePicker2 style="margin-bottom: 5px">
