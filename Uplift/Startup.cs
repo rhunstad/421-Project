@@ -99,6 +99,11 @@ namespace Uplift
                     name: "user",
                     pattern: "{area=Customer}/{controller=User}/{action=Index}/{id?}");
                 endpoints.MapRazorPages();
+
+                endpoints.MapControllerRoute(
+                    name: "results",
+                    pattern: "{area=Customer}/{controller=Results}/{action=Index}/{id?}");
+                endpoints.MapRazorPages();
             });
         }
     }

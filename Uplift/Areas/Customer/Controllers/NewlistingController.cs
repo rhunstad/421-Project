@@ -45,6 +45,15 @@ namespace Uplift.Controllers
             var imageData = item.ItemImage;
 
             return File(imageData, "image/jpg");
+            /*
+            if (imageData != null)
+            {
+                return File(imageData, "image/jpg");
+            } else
+            {
+                return NotFound();
+            }
+            */
         }
 
         [HttpPost]

@@ -1,4 +1,4 @@
-﻿@{
+@{
     ViewData["Title"] = "Items";
 }
 @model dynamic
@@ -19,6 +19,7 @@
         <div class="si-column si-right">
             <h2 id="si-Title">@Model.item.Title</h2>
             <h3 id="si-Price">$@Model.item.Price</h3>
+<<<<<<< HEAD
             <button id="si-Button">
                 Contact Seller
             </button>
@@ -27,6 +28,17 @@
             {
                 <button id="si-Button">Make Offer</button>
             }
+=======
+            <form id="contact-seller-form"style="display: inline" method="get">
+                <button class="btn" style="background-color:#68A4C4;color:#DDECF5;">Contact Seller</button>
+            </form>
+            <script>
+                contactSeller = document.getElementById("contact-seller-form");
+                var actionLink = document.createAttribute('action');
+                actionLink.value = "/Customer/User/Index/" + '@Model.item.SellerID';
+                contactSeller.setAttributeNode(actionLink);
+            </script>
+>>>>>>> dd13359... Updates to search function/test to see if push conflicts
         </div>
 
         <div class="si-column si-right">

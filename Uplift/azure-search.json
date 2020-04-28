@@ -1,0 +1,7 @@
+{
+  "SearchServiceName": "421-final-project-search-service",
+  "SearchIndexName": "azuresql-index",
+  "SearchServiceAdminApiKey": "FDDAAAD85EFA19206C11C2F3B8DC3DB8",
+  "AzureSqlConnectionString": "Data Source=tcp:mysqlserver421.database.windows.net,1433;Initial Catalog=XChange;Persist Security Info=False;User ID=azurelogin;Password=MIS421finalproject;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"
+}
+

@@ -40,6 +40,12 @@ namespace Uplift.Controllers
 
 
             var ItemsList = _unitOfWork.Item.GetAll();
+
+            if (ItemsList.Count() == 0)
+            {
+                return NotFound();
+            }
+
             dynamic ViewModel = new ExpandoObject();
             var count = 0;
             var featured1 = 3;

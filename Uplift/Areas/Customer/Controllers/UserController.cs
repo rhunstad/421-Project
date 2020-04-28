@@ -37,6 +37,7 @@ namespace Uplift.Controllers
 
             var count = 0;
             // SUBSTITUTE THIS METHOD FOR A METHOD THAT FINDS ALL ITEMS WHERE Item.SellerID = customer.UserID
+
             foreach (var Item in ItemsList)
             {
                 if(count < 4)

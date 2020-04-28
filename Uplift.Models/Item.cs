@@ -14,7 +14,8 @@ namespace Uplift.Models
         
         [Key]
         [Required]
-        
+        [JsonIgnore]
+        [FieldBuilderIgnore]
         public Guid ItemID { get; set; }
 
         [Required]
@@ -23,6 +24,7 @@ namespace Uplift.Models
 
         
         [DataType(System.ComponentModel.DataAnnotations.DataType.Currency)]
+        [IsSearchable, IsFilterable, IsSortable]
         public double Price { get; set; }
 
         [IsSearchable, IsFilterable, IsSortable]
@@ -39,6 +41,8 @@ namespace Uplift.Models
         public string Email { get; set; }
 
         [Required]
+        [JsonIgnore]
+        [FieldBuilderIgnore]
         public Guid SellerID { get; set; }
 
         [DataType(System.ComponentModel.DataAnnotations.DataType.Upload)]
