@@ -105,7 +105,7 @@ function loadItem(itemTitle, itemDesc, itemPrice, parentDiv, itemID) {
     imgAtt = document.createAttribute('src');
     // REPLACE THE VALUE AFTER /GetItemPhoto/ with a call to var ItemID above
 
-    imgAtt.value = 'https://localhost:5001/Customer/Newlisting/GetItemPhoto/' + itemID.toString();
+    imgAtt.value = 'https://localhost:44303/Customer/Newlisting/GetItemPhoto/' + itemID.toString();
     img.setAttributeNode(imgAtt);
 
     imgAtt = document.createAttribute('alt');

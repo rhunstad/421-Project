@@ -76,7 +76,42 @@ namespace Uplift.Controllers
             return View(ViewModel);
         }
 
-        
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Create(String id)
+        {
+            
+
+            var userId = _userManager.GetUserId(HttpContext.User);
+            ApplicationUser user = _userManager.FindByIdAsync(userId).Result;
+
+            string[] nameArray = user.Name.Split(" ");
+            Console.WriteLine(nameArray[0]);
+            Console.WriteLine(nameArray[1]);
+
+            var item = await _context.Item
+                .FirstOrDefaultAsync(m => m.ItemID == Guid.Parse(id));
+
+            Offer newOffer = new Offer();
+            newOffer.ItemID = item.ItemID;
+            newOffer.buyerEmail = user.Email;
+            newOffer.Email = item.Email;
+            newOffer.SellerID = item.SellerID;
+            newOffer.BuyerID = Guid.Parse(user.Id);
+            newOffer.FName = nameArray[0];
+            newOffer.LName = nameArray[1];
+            newOffer.OfferDate = DateTime.Now;
+
+
+            _context.Add(newOffer);
+            await _context.SaveChangesAsync();
+            
+
+            return View();
+        }
+
+
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

@@ -20,16 +20,19 @@
             <h2 id="si-Title">@Model.item.Title</h2>
             <h3 id="si-Price">$@Model.item.Price</h3>
 
-            <button class="btn" style="background-color:#68A4C4;color:#DDECF5;" id="si-Button">
-                Contact Seller
-            </button>
+
             <br />
-            @if (Model.user.Email == "tafluker@crimson.ua.edu")
+
+            @if (Model.user.Email != Model.item.Email)
             {
-                <button class="btn" style="background-color:#68A4C4;color:#DDECF5;" id="si-Button">Make Offer</button>
+                <form asp-action="Create" enctype="multipart/form-data">
+                    
+                    <input type="text" style="visibility: hidden;" name="id" value="@Model.item.ItemID">
+                    <button class="btn" style="background-color:#68A4C4;color:#DDECF5;" type="submit" value="Submit">Make Offer</button>
+                </form>
             }
 
-            <form id="contact-seller-form"style="display: inline" method="get">
+            <form id="contact-seller-form" style="display: inline" method="get">
                 <button class="btn" style="background-color:#68A4C4;color:#DDECF5;">Contact Seller</button>
             </form>
             <script>
@@ -62,7 +65,7 @@
 
     }
 
-    
+
 
 
 </main>
