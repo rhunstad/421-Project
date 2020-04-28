@@ -34,8 +34,6 @@ namespace Uplift.Controllers
             dynamic userData = new ExpandoObject();
             var ItemsList = _unitOfWork.Item.GetAll();
             string[] nameArray = user.Name.Split(" ");
-            Console.WriteLine(nameArray[0]);
-            Console.WriteLine(nameArray[1]);
 
 
             List<Item> custItems = new List<Item>();

@@ -27,8 +27,9 @@
             {
                 <form asp-action="Create" enctype="multipart/form-data">
                     
-                    <input type="text" style="visibility: hidden;" name="id" value="@Model.item.ItemID">
-                    <button class="btn" style="background-color:#68A4C4;color:#DDECF5;" type="submit" value="Submit">Make Offer</button>
+                    <input type="text" style="display:none;" name="id" value="@Model.item.ItemID">
+                    <button class="btn" style="background-color:#68A4C4;color:#DDECF5;margin-bottom:10px;" 
+                            type="submit" value="Submit">Make Offer</button>
                 </form>
             }
 
