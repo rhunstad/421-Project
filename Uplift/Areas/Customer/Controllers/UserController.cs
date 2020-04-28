@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Uplift.DataAccess.Data.Repository;
+using Microsoft.AspNetCore.Identity;
 using Uplift.Models;
 
 namespace Uplift.Controllers
@@ -16,31 +17,35 @@ namespace Uplift.Controllers
     {
         private readonly ILogger<UserController> _logger;
         private readonly IUnitOfWork _unitOfWork;
+        private readonly UserManager<ApplicationUser> _userManager;
 
-        public UserController(ILogger<UserController> logger, IUnitOfWork unitOfWork)
+        public UserController(ILogger<UserController> logger, IUnitOfWork unitOfWork, UserManager<ApplicationUser> userManager)
         {
             _logger = logger;
             _unitOfWork = unitOfWork;
+            _userManager = userManager;
         }
         
         public IActionResult Index()
         {
+            var userId = _userManager.GetUserId(HttpContext.User);
+            ApplicationUser user = _userManager.FindByIdAsync(userId).Result;
+
             dynamic userData = new ExpandoObject();
             var ItemsList = _unitOfWork.Item.GetAll();
+            string[] nameArray = user.Name.Split(" ");
+            Console.WriteLine(nameArray[0]);
+            Console.WriteLine(nameArray[1]);
+
 
             List<Item> custItems = new List<Item>();
-            var displayItem = new Item();
-            displayItem.Title = "Title1";
-            displayItem.Price = 89.99;
-            displayItem.ItemDescription = "This is the item description";
-            custItems.Add(displayItem);
-
+            
             var count = 0;
             // SUBSTITUTE THIS METHOD FOR A METHOD THAT FINDS ALL ITEMS WHERE Item.SellerID = customer.UserID
 
             foreach (var Item in ItemsList)
             {
-                if(count < 4)
+                if(Item.SellerID == Guid.Parse(user.Id))
                 {
                     custItems.Add(Item);
                 }
@@ -48,11 +53,11 @@ namespace Uplift.Controllers
             }
 
             Customer cust = new Customer();
-            cust.Email = "rhunstad@crimson.ua.edu";
-            cust.Fname = "Ryland";
-            cust.LName = "Hunstad";
-            cust.Username = "rylandhunstad";
-            cust.PhoneNumber = 720;
+            cust.Email = user.Email;
+            cust.Fname = nameArray[0];
+            cust.LName = nameArray[1];
+            cust.Username = user.UserName;
+            cust.PhoneNumber = long.Parse(user.PhoneNumber);
 
             userData.custItems = custItems;
             userData.customer = cust;
