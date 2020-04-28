@@ -18,7 +18,7 @@ namespace Uplift.Models
         [Required]
         public string Email { get; set; }
 
-       [Required]
+      [Required]
         public Guid SellerID { get; set; }
 
        
