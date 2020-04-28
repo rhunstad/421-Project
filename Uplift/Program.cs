@@ -54,8 +54,12 @@ namespace Uplift
             System.Diagnostics.Debug.WriteLine("Uploading documents...\n");
             // UploadDocuments(indexClient);
 
-            System.Diagnostics.Debug.WriteLine("Searching index...\n");
+            // INSERT THE SNIPPET IN ScaffoldingReadMe.txt HERE: 
+
+            System.Diagnostics.Debug.WriteLine("Searching index for jacket...\n");
             RunQueries(indexClient);
+
+            Console.WriteLine("Creating data source...");
 
             System.Diagnostics.Debug.WriteLine("Process complete \n");
         }
@@ -102,7 +106,7 @@ namespace Uplift
 
             foreach (SearchResult<Item> result in searchResults.Results)
             {
-                System.Diagnostics.Debug.WriteLine(result.Document.Price);
+                System.Diagnostics.Debug.WriteLine(result.Document.ItemID);
             }
         }
 
@@ -115,12 +119,12 @@ namespace Uplift
 
 
             // Query 1 
-            Console.WriteLine("Query 1: Search for term 'product' with no result trimming");
+            Console.WriteLine("Query 1: Search for term 'jacket' with no result trimming");
             parameters = new SearchParameters()
             {
                 OrderBy = new[] { "Price" },
             };
-            results = indexClient.Documents.Search<Item>("product", parameters);
+            results = indexClient.Documents.Search<Item>("jacket", parameters);
             WriteDocuments(results);
 
 

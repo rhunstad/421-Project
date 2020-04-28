@@ -10,6 +10,7 @@ using Uplift.DataAccess.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Azure.Search;
 using Microsoft.Azure.Search.Models;
+using System.Dynamic;
 
 namespace Uplift.Controllers
 {
@@ -23,33 +24,68 @@ namespace Uplift.Controllers
             _logger = logger;
         }
 
-        public IActionResult Index(string id)
+        public IActionResult Index(string cat, string sorton, string id)
         {
 
+            dynamic ViewModel = new ExpandoObject();
 
             IConfigurationBuilder builder = new ConfigurationBuilder().AddJsonFile("azure-search.json");
             IConfigurationRoot configuration = builder.Build();
 
             SearchServiceClient serviceClient = CreateSearchServiceClient(configuration);
-
             string indexName = configuration["SearchIndexName"];
-
             ISearchIndexClient indexClient = serviceClient.Indexes.GetClient(indexName);
 
             SearchParameters parameters;
             DocumentSearchResult<Item> results;
 
-
-            // Query 1 
-            Console.WriteLine("Query 1: Search for term 'product' with no result trimming");
-
             parameters = new SearchParameters();
 
-            /*
+            if(sorton == "phl")
             {
-                OrderBy = new[] { "Price" },
-            };
-            */
+                sorton = "Price desc";
+            }
+            else if (sorton == "plh"){
+                sorton = "Price";
+            }
+            else if (sorton == "tza")
+            {
+                sorton = "Title desc";
+            }
+            else if(sorton == "taz")
+            {
+                sorton = "Title";
+            }
+            else
+            {
+                sorton = "r";
+            }
+
+
+            if ((sorton != "r") && (cat != "all"))
+            {
+                parameters = new SearchParameters()
+                    {
+                        OrderBy = new[] { sorton },
+                        Filter = "ItemCategory eq '" + cat + "'"
+                    };
+            }
+            else if ((sorton == "r") && (cat != "all"))
+            {
+                parameters = new SearchParameters()
+                {
+                    Filter = "ItemCategory eq '" + cat + "'"
+                };
+            }
+            else if ((sorton != "r") && (cat == "all"))
+            {
+                parameters = new SearchParameters()
+                {
+                    OrderBy = new[] { sorton }
+                };
+            }
+
+
             results = indexClient.Documents.Search<Item>(id, parameters);
             List<Item> SearchResultsItems = new List<Item>();
 
@@ -58,14 +94,11 @@ namespace Uplift.Controllers
                 SearchResultsItems.Add(result.Document);
             }
 
-            /*
-            var displayItem = new Item();
-            displayItem.Title = "Title1";
-            displayItem.Price = 89.99;
-            displayItem.ItemDescription = "This is the item description";
-            SearchResultsItems.Add(displayItem);
-            */
-            return View(SearchResultsItems);
+            ViewModel.SearchResultsItems = SearchResultsItems;
+            ViewModel.urltag = id;
+            ViewModel.cat = cat;
+
+            return View(ViewModel);
         }
 
 

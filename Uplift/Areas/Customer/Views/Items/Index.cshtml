@@ -19,16 +19,16 @@
         <div class="si-column si-right">
             <h2 id="si-Title">@Model.item.Title</h2>
             <h3 id="si-Price">$@Model.item.Price</h3>
-<<<<<<< HEAD
-            <button id="si-Button">
+
+            <button class="btn" style="background-color:#68A4C4;color:#DDECF5;" id="si-Button">
                 Contact Seller
             </button>
-            
+            <br />
             @if (Model.user.Email == "tafluker@crimson.ua.edu")
             {
-                <button id="si-Button">Make Offer</button>
+                <button class="btn" style="background-color:#68A4C4;color:#DDECF5;" id="si-Button">Make Offer</button>
             }
-=======
+
             <form id="contact-seller-form"style="display: inline" method="get">
                 <button class="btn" style="background-color:#68A4C4;color:#DDECF5;">Contact Seller</button>
             </form>
@@ -38,7 +38,6 @@
                 actionLink.value = "/Customer/User/Index/" + '@Model.item.SellerID';
                 contactSeller.setAttributeNode(actionLink);
             </script>
->>>>>>> dd13359... Updates to search function/test to see if push conflicts
         </div>
 
         <div class="si-column si-right">

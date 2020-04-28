@@ -14,15 +14,12 @@ namespace Uplift.Models
         
         [Key]
         [Required]
-        [JsonIgnore]
-        [FieldBuilderIgnore]
         public Guid ItemID { get; set; }
 
         [Required]
         [IsSearchable, IsFilterable, IsSortable]
         public string Title { get; set; }
 
-        
         [DataType(System.ComponentModel.DataAnnotations.DataType.Currency)]
         [IsSearchable, IsFilterable, IsSortable]
         public double Price { get; set; }

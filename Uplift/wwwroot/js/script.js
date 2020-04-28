@@ -25,7 +25,8 @@ $(window).scroll(function () {
 function executeSearchQuery() {
     var searchQuery = document.getElementById("search-query-input-box").value;
     structured_search_query = searchQuery.replace(/\s+/g, '-').toLowerCase();
-    window.location = "/Customer/Results";
+    newLoc = "/Customer/Results/Index/all/r/" + structured_search_query;
+    window.location = newLoc;
 }
 
 
@@ -126,7 +127,7 @@ function loadItem(itemTitle, itemDesc, itemPrice, parentDiv, itemID) {
     priceAtt = document.createAttribute('style');
     priceAtt.value = 'color:grey;';
     price.setAttributeNode(priceAtt);
-    price.textContent = itemPrice;
+    price.textContent = '$' + itemPrice.toString();
 
     if (itemDesc.length > 100) {
         itemDesc = itemDesc.substring(0, 100) + "...";

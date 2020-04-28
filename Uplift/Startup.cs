@@ -102,7 +102,7 @@ namespace Uplift
 
                 endpoints.MapControllerRoute(
                     name: "results",
-                    pattern: "{area=Customer}/{controller=Results}/{action=Index}/{id?}");
+                    pattern: "{area=Customer}/{controller=Results}/{action=Index}/{cat?}/{sorton?}/{id?}");
                 endpoints.MapRazorPages();
             });
         }

@@ -31,3 +31,13 @@ Add the following code to the Configure method in your Application's Startup cla
             template : "{area:exists}/{controller=Home}/{action=Index}/{id?}"
           );
         });
+
+
+            DataSource dataSource = DataSource.AzureSql(
+                name: "mysqlserver421",
+                sqlConnectionString: configuration["AzureSqlConnectionString"],
+                tableOrViewName: "Item");
+            dataSource.DataChangeDetectionPolicy = new SqlIntegratedChangeTrackingPolicy();
+
+            
+            serviceClient.DataSources.CreateOrUpdateAsync(dataSource).Wait();
