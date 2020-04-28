@@ -68,6 +68,7 @@ namespace Uplift.Controllers
             OffersList.Add(myOffer);
 
             ViewModel.item = item;
+            ViewModel.user = user;
 
             //CHANGE THIS ONCE YOU UPDATE METHOD ABOVE: 
             ViewModel.Offers = OffersList;

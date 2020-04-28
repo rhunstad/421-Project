@@ -15,6 +15,7 @@ using Uplift.DataAccess.Data;
 using Uplift.DataAccess.Data.Repository.IRepository;
 using Uplift.DataAccess.Data.Repository;
 using Uplift.DataAccess.Data.Initializer;
+using Uplift.Models;
 
 namespace Uplift
 {
@@ -39,7 +40,7 @@ namespace Uplift
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
-            services.AddIdentity<IdentityUser,IdentityRole>()
+            services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders().
                 AddDefaultUI(UIFramework.Bootstrap4);

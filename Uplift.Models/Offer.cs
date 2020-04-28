@@ -28,16 +28,9 @@ namespace Uplift.Models
 
         public string LName { get; set; }
 
-
-
-
         [Key]
         [Required]
         public DateTime OfferDate { get; set; }
 
-       
-
-        
-  
     }
 }

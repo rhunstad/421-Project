@@ -6,8 +6,8 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using Microsoft.Azure.Search;
-using Microsoft.Azure.Search.Models;
+//using Microsoft.Azure.Search;
+//using Microsoft.Azure.Search.Models;
 
 namespace Uplift
 {

@@ -11,6 +11,7 @@ using Microsoft.EntityFrameworkCore;
 using Uplift.DataAccess.Data;
 using Uplift.Models;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 
 namespace Uplift.Controllers
 {
@@ -20,10 +21,12 @@ namespace Uplift.Controllers
     {
 
         private readonly ApplicationDbContext _context;
+        private readonly UserManager<ApplicationUser> _userManager;
 
-        public NewlistingController(ApplicationDbContext context)
+        public NewlistingController(ApplicationDbContext context, UserManager<ApplicationUser> userManager)
         {
             _context = context;
+            _userManager = userManager;
         }
 
         public IActionResult Create()
@@ -56,6 +59,12 @@ namespace Uplift.Controllers
                     await imageFile.CopyToAsync(memoryStream);
                     newItem.ItemImage = memoryStream.ToArray();
                 }
+
+                var userId = _userManager.GetUserId(HttpContext.User);
+                ApplicationUser user = _userManager.FindByIdAsync(userId).Result;
+
+                newItem.Email = user.Email;
+                newItem.SellerID = Guid.Parse(user.Id);
 
                 _context.Add(newItem);
                 await _context.SaveChangesAsync();

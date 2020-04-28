@@ -22,6 +22,11 @@
             <button id="si-Button">
                 Contact Seller
             </button>
+            
+            @if (Model.user.Email == "tafluker@crimson.ua.edu")
+            {
+                <button id="si-Button">Make Offer</button>
+            }
         </div>
 
         <div class="si-column si-right">
@@ -45,4 +50,8 @@
         </script>
 
     }
+
+    
+
+
 </main>
