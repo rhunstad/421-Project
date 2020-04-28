@@ -87,8 +87,6 @@ namespace Uplift.Controllers
             ApplicationUser user = _userManager.FindByIdAsync(userId).Result;
 
             string[] nameArray = user.Name.Split(" ");
-            Console.WriteLine(nameArray[0]);
-            Console.WriteLine(nameArray[1]);
 
             var item = await _context.Item
                 .FirstOrDefaultAsync(m => m.ItemID == Guid.Parse(id));
@@ -103,7 +101,7 @@ namespace Uplift.Controllers
             newOffer.LName = nameArray[1];
             newOffer.OfferDate = DateTime.Now;
 
-
+            Console.WriteLine();
             _context.Add(newOffer);
             await _context.SaveChangesAsync();
             
