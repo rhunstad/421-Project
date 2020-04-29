@@ -9,10 +9,12 @@ using Microsoft.Extensions.Logging;
 using Uplift.DataAccess.Data.Repository;
 using Microsoft.AspNetCore.Identity;
 using Uplift.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Uplift.Controllers
 {
     [Area("Customer")]
+    [Authorize]
     public class UserController : Controller
     {
         private readonly ILogger<UserController> _logger;

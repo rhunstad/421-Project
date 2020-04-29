@@ -54,7 +54,18 @@ namespace Uplift
             System.Diagnostics.Debug.WriteLine("Uploading documents...\n");
             // UploadDocuments(indexClient);
 
-            // INSERT THE SNIPPET IN ScaffoldingReadMe.txt HERE: 
+            // INSERT THE SNIPPET IN ScaffoldingReadMe.txt HERE:
+            /*
+            DataSource dataSource = DataSource.AzureSql(
+                name: "mysqlserver421",
+                sqlConnectionString: configuration["AzureSqlConnectionString"],
+                tableOrViewName: "Item");
+
+            dataSource.DataChangeDetectionPolicy = new SqlIntegratedChangeTrackingPolicy();
+
+            serviceClient.DataSources.CreateOrUpdateAsync(dataSource).Wait();
+            */
+
 
             System.Diagnostics.Debug.WriteLine("Searching index for jacket...\n");
             RunQueries(indexClient);
@@ -92,9 +103,9 @@ namespace Uplift
             var definition = new Microsoft.Azure.Search.Models.Index()
             {
                 Name = indexName,
-                Fields = FieldBuilder.BuildForType<Item>()
+                Fields = FieldBuilder.BuildForType<Item>(),
+                
             };
-
 
             serviceClient.Indexes.Create(definition);
         }
@@ -116,6 +127,7 @@ namespace Uplift
 
             SearchParameters parameters;
             DocumentSearchResult<Item> results;
+
 
 
             // Query 1 

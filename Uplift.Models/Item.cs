@@ -12,8 +12,9 @@ namespace Uplift.Models
     public class Item
     {
         
-        [Key]
+        [System.ComponentModel.DataAnnotations.Key]
         [Required]
+        [FieldBuilderIgnore]
         public Guid ItemID { get; set; }
 
         [Required]
@@ -38,11 +39,11 @@ namespace Uplift.Models
         public string Email { get; set; }
 
         [Required]
-        [JsonIgnore]
         [FieldBuilderIgnore]
         public Guid SellerID { get; set; }
 
         [DataType(System.ComponentModel.DataAnnotations.DataType.Upload)]
+        [FieldBuilderIgnore]
         public byte[] ItemImage { get; set; }
 
         public DateTime ModifiedDate { get; set; }
