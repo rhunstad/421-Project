@@ -40,7 +40,7 @@ namespace Uplift.Controllers
 
 
             //  TROUBLE WITH CALLING THIS: Throws a "NullReferenceException: Object reference not set to an instance of an object." error: 
-            // var OffersList = _unitOfWork.Offer.GetAll();
+            var OffersFirst = _unitOfWork.Offer.GetAll();
 
             // INSERT FUNCTION HERE TO PARSE THROUGH OFFERS WHERE OFFER.SellerID = Item.SellerID
 
@@ -59,13 +59,26 @@ namespace Uplift.Controllers
             }
 
             List<Offer> OffersList = new List<Offer>();
-            Offer myOffer = new Offer();
-            myOffer.buyerEmail = "BUYEREMAIL";
-            myOffer.FName = "Ryland";
-            myOffer.LName = "Hunstad";
-            myOffer.ItemID = item.ItemID;
-            myOffer.Email = "rhunstad@crimson.ua.edu";
-            OffersList.Add(myOffer);
+
+            var count = 0;
+
+            foreach (var Offer in OffersFirst)
+            {
+                if (Offer.ItemID == item.ItemID)
+                {
+                    OffersList.Add(Offer);
+                }
+                count += 1;
+            }
+
+            //List<Offer> OffersList = new List<Offer>();
+            //Offer myOffer = new Offer();
+            //myOffer.buyerEmail = "BUYEREMAIL";
+            //myOffer.FName = "Ryland";
+            //myOffer.LName = "Hunstad";
+            //myOffer.ItemID = item.ItemID;
+            //myOffer.Email = "rhunstad@crimson.ua.edu";
+            //OffersList.Add(myOffer);
 
             ViewModel.item = item;
             ViewModel.user = user;
