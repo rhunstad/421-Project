@@ -10,17 +10,6 @@ function swapPic3() {
 }
 
 
-/*
-// FIX THIS FUNCTION ( PUT LOGIC IN IT ):
-$(window).scroll(function () {
-    var scrolled = $(window).scrollTop() + $(window).height();
-    var docheight = Math.round(($(document).height() * .7));
-    if (scrolled > docheight && (window.location.href.includes("Customer/Results"))) {
-        // Do stuff
-    }
-});
-*/
-
 
 function executeSearchQuery() {
     var searchQuery = document.getElementById("search-query-input-box").value;
@@ -105,7 +94,7 @@ function loadItem(itemTitle, itemDesc, itemPrice, parentDiv, itemID) {
     imgAtt = document.createAttribute('src');
     // REPLACE THE VALUE AFTER /GetItemPhoto/ with a call to var ItemID above
 
-    imgAtt.value = 'https://localhost:44303/Customer/Newlisting/GetItemPhoto/' + itemID.toString();
+    imgAtt.value = 'https://localhost:5001/Customer/Newlisting/GetItemPhoto/' + itemID.toString();
     img.setAttributeNode(imgAtt);
 
     imgAtt = document.createAttribute('alt');
