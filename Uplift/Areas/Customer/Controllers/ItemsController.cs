@@ -70,7 +70,7 @@ namespace Uplift.Controllers
                 }
                 count += 1;
             }
-
+            Console.WriteLine();
             //List<Offer> OffersList = new List<Offer>();
             //Offer myOffer = new Offer();
             //myOffer.buyerEmail = "BUYEREMAIL";

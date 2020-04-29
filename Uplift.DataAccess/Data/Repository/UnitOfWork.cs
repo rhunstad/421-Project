@@ -13,6 +13,7 @@ namespace Uplift.DataAccess.Data.Repository
         {
             _db = db;
             Item = new ItemRepository(_db);
+            Offer = new OfferRepository(_db);
         }
 
         public IItemRepository Item { get; private set; }
