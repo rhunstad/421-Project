@@ -29,8 +29,13 @@ namespace Uplift.Controllers
             _userManager = userManager;
         }
 
-        public IActionResult Create()
+        public IActionResult Create(string id)
         {
+            /*
+            The URL router has a value of id being passed into this controller.
+            Because we may be passing in full GUID's as well as "null" values and "0" values it will be best
+            to pass the id in as a string, check if it's a GUID and if it is cast id as type GUID
+            */
             return View();
         }
 

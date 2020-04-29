@@ -17,7 +17,7 @@ using System.Dynamic;
 namespace Uplift.Controllers
 {
     [Area("Customer")]
-    //[Authorize(Roles = SD.Admin)]
+    [Authorize(Roles = SD.Admin)]
     public class ItemsController : Controller
     {
         private readonly ApplicationDbContext _context;

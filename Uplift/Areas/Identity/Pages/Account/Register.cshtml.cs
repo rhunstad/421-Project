@@ -103,13 +103,38 @@ namespace Uplift.Areas.Identity.Pages.Account
                 if (result.Succeeded)
                 {
 
-                   
+                    // THIS BLOCK OF CODE DETERMINES IF CURRENT USER is an ADMIN
+
+                    var userId = _userManager.GetUserId(HttpContext.User);
+                    ApplicationUser currentUser = _userManager.FindByIdAsync(userId).Result;
+                    var isAdministrator = false;
+                    if (currentUser != null)
+                    {
+
+                        var userRole = _userManager.GetRolesAsync(currentUser).Result;
+
+                        foreach (var roleItem in userRole)
+                        {
+                            if (roleItem == SD.Admin)
+                            {
+                                isAdministrator = true;
+                            }
+                        }
+                    }
+
+
+
                     string role = Request.Form["rdUserRole"].ToString();
 
                     if (role == SD.Admin)
                     {
-                        // IF YOU WANT TO ADD ADMIN's TO SITE< CHANGE SD.Manager below to SD.Admin
-                        await _userManager.AddToRoleAsync(user, SD.Manager);
+                        if (isAdministrator)
+                        {
+                            await _userManager.AddToRoleAsync(user, SD.Admin);
+                        } else
+                        {
+                            await _userManager.AddToRoleAsync(user, SD.Manager);
+                        }
                     }
                     else
                     {

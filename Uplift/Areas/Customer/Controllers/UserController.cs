@@ -33,6 +33,8 @@ namespace Uplift.Controllers
             var userId = _userManager.GetUserId(HttpContext.User);
             ApplicationUser user = _userManager.FindByIdAsync(userId).Result;
 
+
+
             dynamic userData = new ExpandoObject();
             var ItemsList = _unitOfWork.Item.GetAll();
             string[] nameArray = user.Name.Split(" ");

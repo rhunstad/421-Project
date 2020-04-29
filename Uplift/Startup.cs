@@ -101,6 +101,11 @@ namespace Uplift
                 endpoints.MapRazorPages();
 
                 endpoints.MapControllerRoute(
+                    name: "newlisting",
+                    pattern: "{area=Customer}/{controller=Newlisting}/{action=Create}/{id?}");
+                endpoints.MapRazorPages();
+
+                endpoints.MapControllerRoute(
                     name: "results",
                     pattern: "{area=Customer}/{controller=Results}/{action=Index}/{cat?}/{sorton?}/{id?}");
                 endpoints.MapRazorPages();
