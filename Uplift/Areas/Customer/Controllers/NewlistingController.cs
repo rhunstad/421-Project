@@ -16,7 +16,7 @@ using Microsoft.AspNetCore.Identity;
 namespace Uplift.Controllers
 {
     [Area("Customer")]
-    [Authorize]
+    
     public class NewlistingController : Controller
     {
 
@@ -38,7 +38,7 @@ namespace Uplift.Controllers
             */
             return View();
         }
-
+        
         public async Task<IActionResult> GetItemPhoto(Guid id)
         {
             var item = await _context.Item
@@ -63,6 +63,7 @@ namespace Uplift.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public async Task<IActionResult> Create(Item newItem, IFormFile imageFile)
         {
             if (ModelState.IsValid)
