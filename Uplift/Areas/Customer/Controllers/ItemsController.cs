@@ -17,7 +17,7 @@ using System.Dynamic;
 namespace Uplift.Controllers
 {
     [Area("Customer")]
-    [Authorize(Roles = SD.Admin)]
+    [Authorize]
     public class ItemsController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -94,7 +94,7 @@ namespace Uplift.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(String id)
         {
-            
+            Console.WriteLine();
 
             var userId = _userManager.GetUserId(HttpContext.User);
             ApplicationUser user = _userManager.FindByIdAsync(userId).Result;
@@ -117,9 +117,9 @@ namespace Uplift.Controllers
             Console.WriteLine();
             _context.Add(newOffer);
             await _context.SaveChangesAsync();
-            
 
-            return View();
+            var NewUrl = "Index/" + id;
+            return Redirect(NewUrl);
         }
 
 
