@@ -71,19 +71,10 @@ namespace Uplift.Controllers
                 count += 1;
             }
             Console.WriteLine();
-            //List<Offer> OffersList = new List<Offer>();
-            //Offer myOffer = new Offer();
-            //myOffer.buyerEmail = "BUYEREMAIL";
-            //myOffer.FName = "Ryland";
-            //myOffer.LName = "Hunstad";
-            //myOffer.ItemID = item.ItemID;
-            //myOffer.Email = "rhunstad@crimson.ua.edu";
-            //OffersList.Add(myOffer);
 
             ViewModel.item = item;
             ViewModel.user = user;
 
-            //CHANGE THIS ONCE YOU UPDATE METHOD ABOVE: 
             ViewModel.Offers = OffersList;
 
             return View(ViewModel);
@@ -118,7 +109,7 @@ namespace Uplift.Controllers
             _context.Add(newOffer);
             await _context.SaveChangesAsync();
 
-            var NewUrl = "Index/" + id;
+            var NewUrl = "https://xchangewebsite.azurewebsites.net/Customer/Items/Index/" + id;
             return Redirect(NewUrl);
         }
 

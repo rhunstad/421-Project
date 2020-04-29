@@ -41,3 +41,17 @@ Add the following code to the Configure method in your Application's Startup cla
 
             
             serviceClient.DataSources.CreateOrUpdateAsync(dataSource).Wait();
+
+
+
+
+
+            <form id="contact-seller-form" style="display: inline" method="get">
+                <button class="btn" style="background-color:#68A4C4;color:#DDECF5;">Contact Seller</button>
+            </form>
+            <script>
+                contactSeller = document.getElementById("contact-seller-form");
+                var actionLink = document.createAttribute('action');
+                actionLink.value = "/Customer/User/Index/" + '@Model.item.SellerID';
+                contactSeller.setAttributeNode(actionLink);
+            </script>

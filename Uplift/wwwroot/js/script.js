@@ -14,7 +14,7 @@ function swapPic3() {
 function executeSearchQuery() {
     var searchQuery = document.getElementById("search-query-input-box").value;
     structured_search_query = searchQuery.replace(/\s+/g, '-').toLowerCase();
-    newLoc = "/Customer/Results/Index/all/r/" + structured_search_query;
+    newLoc = "https://xchangewebsite.azurewebsites.net/Customer/Results/Index/all/r/" + structured_search_query;
     window.location = newLoc;
 }
 
@@ -50,7 +50,7 @@ function loadOffer(offerFName, offerLName, offerBuyerGuid) {
     linkAtt = document.createAttribute('href');
 
     // CHANGE THIS LINE ONCE WE GET GUID:
-    linkAtt.value = '/Customer/User/Index/' + offerBuyerGuid.toString();
+    linkAtt.value = "mailto:" + offerBuyerGuid.toString();
     userLink.setAttributeNode(linkAtt);
     userLink.textContent = offerFName + " " + offerLName;
 
@@ -77,7 +77,7 @@ function loadItem(itemTitle, itemDesc, itemPrice, parentDiv, itemID) {
 
     var itemLink = document.createElement('a');
     linkAtt = document.createAttribute('href');
-    linkAtt.value = '/Customer/Items/Index/' + itemID.toString();
+    linkAtt.value = 'https://xchangewebsite.azurewebsites.net/Customer/Items/Index/' + itemID.toString();
     itemLink.setAttributeNode(linkAtt);
     linkAtt = document.createAttribute('style');
     linkAtt.value = "color:inherit;";
@@ -93,8 +93,8 @@ function loadItem(itemTitle, itemDesc, itemPrice, parentDiv, itemID) {
     var img = document.createElement("img");
     imgAtt = document.createAttribute('src');
     // REPLACE THE VALUE AFTER /GetItemPhoto/ with a call to var ItemID above
-
-    imgAtt.value = 'https://localhost:5001/Customer/Newlisting/GetItemPhoto/' + itemID.toString();
+    // Add this: https://xchangewebsite.azurewebsites.net/
+    imgAtt.value = 'https://xchangewebsite.azurewebsites.net/Customer/Newlisting/GetItemPhoto/' + itemID.toString();
     img.setAttributeNode(imgAtt);
 
     imgAtt = document.createAttribute('alt');

@@ -4,15 +4,18 @@ using System.Diagnostics;
 using System.Dynamic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Uplift.DataAccess.Data.Repository;
 using Uplift.Models;
+using Uplift.Utility;
 
 namespace Uplift.Controllers
 {
     [Area("Admin")]
+    [Authorize(Roles=SD.Admin)]
     public class AdminUserController : Controller
     {
         private readonly ILogger<AdminUserController> _logger;
